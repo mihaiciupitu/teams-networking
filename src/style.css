@@ -1,4 +1,60 @@
-h1 {
-  justify-content: center;
+.top {
   display: flex;
+  flex-direction: row;
+  min-height: 100px;
+
+  justify-content: center;
+}
+header {
+  text-align: center;
+}
+:root {
+  --primary-color: white;
+  --secondary-color: black;
+  filter: invert(0%);
+}
+.dark-theme {
+  --primary-color: black;
+  --secondary-color: white;
+}
+.image-dark {
+  filter: invert(100%);
+}
+.logo-dark {
+  filter: invert(100%);
+}
+.image {
+  margin-left: 5px;
+  width: 180px;
+}
+#icon {
+  cursor: pointer;
+
+  padding: 0;
+  margin-top: 5px;
+  width: 22px;
+}
+h1 {
+  margin: 0;
+}
+body {
+  min-height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+footer {
+  display: flex;
+  justify-content: center;
+}
+.main {
+  box-shadow: 0 0 0 1px var(--secondary-color), 0 2px 3px var(--secondary-color);
+  border-radius: 2px;
+  margin-top: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: fill;
+  height: 740px;
 }
