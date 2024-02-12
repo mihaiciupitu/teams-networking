@@ -11,7 +11,7 @@ icon.onclick = function () {
   logodark.classList.toggle("logo-dark");
   logo2dark.classList.toggle("logo-dark");
   logo3dark.classList.toggle("logo-dark");
-  canvas.classList.toggle("logo-dark");
+  
   if (document.body.classList.contains("dark-theme")) icon.src = "images/sun.png";
   else icon.src = "images/moon.png";
 };
