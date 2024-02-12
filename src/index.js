@@ -1,4 +1,5 @@
 // Dark Theme
+import "./style.css";
 const icon = document.getElementById("icon");
 const imgdark = document.querySelector(".image");
 const logodark = document.querySelector(".logo");
