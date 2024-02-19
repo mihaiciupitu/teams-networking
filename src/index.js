@@ -16,3 +16,14 @@ icon.onclick = function () {
   if (document.body.classList.contains("dark-theme")) icon.src = "sun.png";
   else icon.src = "moon.png";
 };
+
+function loadTeams() {
+  const promise = fetch("http://localhost:3000/teams-json")
+    .then(r => r.json())
+    .then(teams => {
+      console.table(teams);
+      return teams;
+    });
+}
+
+loadTeams();
