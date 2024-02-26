@@ -21,9 +21,21 @@ function loadTeams() {
   const promise = fetch("http://localhost:3000/teams-json")
     .then(r => r.json())
     .then(teams => {
-      console.table(teams);
-      return teams;
+      showTeams(teams);
     });
+}
+function getTeams(teams) {
+  return teams.map(
+    team => `<tr>  
+  <td>${team.promotion}</td> 
+  <td>${team.members}</td> 
+  <td>${team.name}</td> 
+  <td><a href="${team.url}" target="_blank" <a>  ${team.url} </a></td> </tr>`
+  );
+}
+function showTeams(teams) {
+  const table = document.querySelector("#teamsTable tbody");
+  table.innerHTML = getTeams(teams).join("");
 }
 
 loadTeams();

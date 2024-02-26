@@ -1,4 +1,4 @@
-.top {
+.header-wrapper {
   display: flex;
   flex-direction: row;
   min-height: 100px;
@@ -72,4 +72,7 @@ table {
 }
 footer {
   margin-top: 5px;
+}
+a {
+  text-decoration: none;
 }

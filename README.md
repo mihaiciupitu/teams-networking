@@ -1,2 +1,16 @@
 # teams-networking
-FastTrackIT CRUD Projects 
+
+FastTrackIT CRUD Projects
+
+## Commands
+
+```sh
+
+cd ../node-api
+npm start
+```
+
+```sh
+npm start
+
+```
