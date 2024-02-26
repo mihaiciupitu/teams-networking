@@ -22,19 +22,29 @@
       </div>
     </header>
     <div class="main">
-      <table id="teamsTable" border="1">
-        <thead>
-          <tr>
-            <th>Promotion</th>
-            <th>Members</th>
-            <th>Project Name</th>
-            <th>Project URL</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="table"></tbody>
-        <tfoot></tfoot>
-      </table>
+      <form action="secretary.html" method="post">
+        <table id="teamsTable" border="1">
+          <thead>
+            <tr>
+              <th>Promotion</th>
+              <th>Members</th>
+              <th>Project Name</th>
+              <th>Project URL</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="table"></tbody>
+          <tfoot>
+            <tr>
+              <td><input type="text" name="promotion" id="promotion" placeholder="Enter promotion" required /></td>
+              <td><input type="text" name="members" id="members" placeholder="Enter member" required /></td>
+              <td><input type="text" name="name" id="name" placeholder="Enter name" required /></td>
+              <td><input type="text" name="url" id="url" placeholder="Enter project URL " required /></td>
+              <td><button type="submit">Save</button> <button type="reset">X</button></td>
+            </tr>
+          </tfoot>
+        </table>
+      </form>
     </div>
     <footer>
       <a href="https://www.linkedin.com/in/mihaiandreiciupitu" target="_blank">
