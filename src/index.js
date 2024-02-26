@@ -30,7 +30,8 @@ function getTeams(teams) {
   <td>${team.promotion}</td> 
   <td>${team.members}</td> 
   <td>${team.name}</td> 
-  <td><a href="${team.url}" target="_blank" <a>  ${team.url} </a></td> </tr>`
+  <td><a href="${team.url}" target="_blank" >  ${team.url} </a></td>
+  <td>X</td> </tr>`
   );
 }
 function showTeams(teams) {

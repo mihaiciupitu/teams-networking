@@ -54,12 +54,11 @@ footer {
   justify-content: center;
 }
 .main {
-  box-shadow: 0 0 0 1px var(--secondary-color), 0 2px 3px var(--secondary-color);
-  border-radius: 2px;
   margin-top: 20px;
   margin-right: 10px;
   margin-left: 10px;
   flex: 1;
+  padding: 15px;
 }
 h2 {
   margin: 5px 0;
@@ -67,12 +66,22 @@ h2 {
   font-weight: 100;
   font-size: 1.2em;
 }
-table {
+#teamsTable {
   width: 100%;
+  border-collapse: collapse;
 }
 footer {
   margin-top: 5px;
 }
 a {
   text-decoration: none;
+}
+#teamsTable th,
+#teamsTable td {
+  border: 1px solid #057988;
+  padding: 5px;
+}
+#teamsTable th {
+  background-color: #0798ab;
+  color: white;
 }
