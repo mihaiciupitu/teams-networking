@@ -17,6 +17,16 @@ icon.onclick = function () {
   else icon.src = "moon.png";
 };
 
+function createTeamRequest(team) {
+  fetch("http://localhost:3000/teams-json/create", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(team)
+  });
+}
+
 function loadTeams() {
   const promise = fetch("http://localhost:3000/teams-json")
     .then(r => r.json())
@@ -38,5 +48,20 @@ function showTeams(teams) {
   const table = document.querySelector("#teamsTable tbody");
   table.innerHTML = getTeams(teams).join("");
 }
+function onSubmit(e) {
+  e.preventDefault();
 
+  let team = {
+    promotion: `WON3`,
+    members: `Your Name`,
+    name: `CV`,
+    url: `https://github.com/mihaiciupitu`
+  };
+  createTeamRequest(team);
+  window.location.reload();
+}
+function initEvents() {
+  document.querySelector("#teamsForm").addEventListener("submit", onSubmit);
+}
+initEvents();
 loadTeams();

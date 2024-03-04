@@ -85,3 +85,7 @@ a {
   background-color: #0798ab;
   color: white;
 }
+table a:visited {
+  text-decoration: none;
+  color: var(--secondary-color);
+}
