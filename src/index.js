@@ -48,15 +48,19 @@ function showTeams(teams) {
   const table = document.querySelector("#teamsTable tbody");
   table.innerHTML = getTeams(teams).join("");
 }
+function getFormValues() {
+  return {
+    promotion: document.getElementById("promotion").value,
+    members: document.getElementById("members").value,
+    name: document.getElementById("name").value,
+    url: document.getElementById("url").value
+  };
+}
 function onSubmit(e) {
   e.preventDefault();
 
-  let team = {
-    promotion: `WON3`,
-    members: `Your Name`,
-    name: `CV`,
-    url: `https://github.com/mihaiciupitu`
-  };
+  let team = getFormValues();
+
   createTeamRequest(team);
   window.location.reload();
 }
