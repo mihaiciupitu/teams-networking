@@ -44,7 +44,7 @@ function getTeams(teams) {
   <td>${team.name}</td> 
   <td><a href="${team.url}" target="_blank" >  ${team.url} </a></td>
   <td>
-      <a href="#" onclick="deleteTeamRequest('${team.id}')"> X </a>  
+      <a href="#" data-id='${team.id}'> X </a>  
   </td> 
   </tr>`
   );
@@ -53,7 +53,7 @@ function showTeams(teams) {
   const table = $("#teamsTable tbody");
   table.innerHTML = getTeams(teams).join("");
 }
-window.deleteTeamRequest = deleteTeamRequest;
+
 function getFormValues() {
   return {
     promotion: $("input[name=promotion]").value,
@@ -70,6 +70,13 @@ function onSubmit(e) {
 }
 function initEvents() {
   $("#teamsForm").addEventListener("submit", onSubmit);
+  $("#teamsTable tbody").addEventListener("click", e => {
+    if (e.target.matches("a")) {
+      const id = e.target.dataset.id;
+      deleteTeamRequest(id);
+      window.location.reload();
+    }
+  });
 }
 function deleteTeamRequest(id) {
   fetch("http://localhost:3000/teams-json/delete", {
