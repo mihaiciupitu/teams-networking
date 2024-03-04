@@ -89,3 +89,7 @@ table a:visited {
   text-decoration: none;
   color: var(--secondary-color);
 }
+table a {
+  text-decoration: none;
+  color: var(--secondary-color);
+}

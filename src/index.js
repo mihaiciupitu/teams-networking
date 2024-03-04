@@ -1,10 +1,10 @@
 // Dark Theme
 import "./style.css";
 const icon = document.getElementById("icon");
-const imgdark = document.querySelector(".image");
-const logodark = document.querySelector(".logo");
-const logo2dark = document.querySelector(".logo2");
-const logo3dark = document.querySelector(".logo3");
+const imgdark = $(".image");
+const logodark = $(".logo");
+const logo2dark = $(".logo2");
+const logo3dark = $(".logo3");
 
 icon.onclick = function () {
   document.body.classList.toggle("dark-theme");
@@ -16,7 +16,9 @@ icon.onclick = function () {
   if (document.body.classList.contains("dark-theme")) icon.src = "sun.png";
   else icon.src = "moon.png";
 };
-
+function $(selector) {
+  return document.querySelector(selector);
+}
 function createTeamRequest(team) {
   fetch("http://localhost:3000/teams-json/create", {
     method: "POST",
@@ -45,27 +47,26 @@ function getTeams(teams) {
   );
 }
 function showTeams(teams) {
-  const table = document.querySelector("#teamsTable tbody");
+  const table = $("#teamsTable tbody");
   table.innerHTML = getTeams(teams).join("");
 }
+
 function getFormValues() {
   return {
-    promotion: document.getElementById("promotion").value,
-    members: document.getElementById("members").value,
-    name: document.getElementById("name").value,
-    url: document.getElementById("url").value
+    promotion: $("input[name=promotion]").value,
+    members: $("input[name=members]").value,
+    name: $("input[name=name]").value,
+    url: $("input[name=url]").value
   };
 }
 function onSubmit(e) {
   e.preventDefault();
-
   let team = getFormValues();
-
   createTeamRequest(team);
   window.location.reload();
 }
 function initEvents() {
-  document.querySelector("#teamsForm").addEventListener("submit", onSubmit);
+  $("#teamsForm").addEventListener("submit", onSubmit);
 }
 initEvents();
 loadTeams();
