@@ -6,6 +6,7 @@ const logodark = $(".logo");
 const logo2dark = $(".logo2");
 const logo3dark = $(".logo3");
 let allTeams = [];
+let editId;
 icon.onclick = function () {
   document.body.classList.toggle("dark-theme");
   imgdark.classList.toggle("image-dark");
@@ -74,17 +75,31 @@ function getFormValues() {
     url: $("input[name=url]").value
   };
 }
+function setFormValues(team) {
+  $("input[name=promotion]").value = team.promotion;
+  $("input[name=members]").value = team.members;
+  $("input[name=name]").value = team.name;
+  $("input[name=url]").value = team.url;
+}
 function onSubmit(e) {
   e.preventDefault();
   let team = getFormValues();
-  createTeamRequest(team);
+  if (editId) {
+    team.id = editId;
+    updateTeamRequest(team);
+  } else {
+    createTeamRequest(team);
+  }
+
   window.location.reload();
 }
 function startEdit(id) {
+  editId = id;
   const team = allTeams.find(team => {
     return id === team.id;
   });
   console.info(team);
+  setFormValues(team);
 }
 function initEvents() {
   $("#teamsForm").addEventListener("submit", onSubmit);
@@ -94,6 +109,7 @@ function initEvents() {
       deleteTeamRequest(id);
       window.location.reload();
     } else if (e.target.matches("a.edit-btn")) {
+      e.preventDefault();
       const id = e.target.dataset.id;
       startEdit(id);
     }
