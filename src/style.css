@@ -93,3 +93,7 @@ table a {
   text-decoration: none;
   color: var(--secondary-color);
 }
+#teamsTable tfoot input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+}

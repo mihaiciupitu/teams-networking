@@ -73,8 +73,10 @@ function initEvents() {
   $("#teamsTable tbody").addEventListener("click", e => {
     if (e.target.matches("a")) {
       const id = e.target.dataset.id;
-      deleteTeamRequest(id);
-      window.location.reload();
+      if (id) {
+        deleteTeamRequest(id);
+        window.location.reload();
+      }
     }
   });
 }
