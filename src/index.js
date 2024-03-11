@@ -5,7 +5,7 @@ const imgdark = $(".image");
 const logodark = $(".logo");
 const logo2dark = $(".logo2");
 const logo3dark = $(".logo3");
-
+let allTeams = [];
 icon.onclick = function () {
   document.body.classList.toggle("dark-theme");
   imgdark.classList.toggle("image-dark");
@@ -29,26 +29,22 @@ function createTeamRequest(team) {
   });
 }
 
-function updateTeamRequest() {
+function updateTeamRequest(team) {
   fetch("http://localhost:3000/teams-json/update", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({
-      id: "fedcba1610310163146",
-      promotion: "WON3",
-      members: "UpdatedName",
-      name: "Name",
-      url: "https://github.com/nmatei/teams-networking"
-    })
+    body: JSON.stringify(team)
   });
 }
 function loadTeams() {
   const promise = fetch("http://localhost:3000/teams-json")
     .then(r => r.json())
     .then(teams => {
+      allTeams = teams;
       showTeams(teams);
+      return teams;
     });
 }
 function getTeams(teams) {
@@ -84,6 +80,12 @@ function onSubmit(e) {
   createTeamRequest(team);
   window.location.reload();
 }
+function startEdit(id) {
+  const team = allTeams.find(team => {
+    return id === team.id;
+  });
+  console.info(team);
+}
 function initEvents() {
   $("#teamsForm").addEventListener("submit", onSubmit);
   $("#teamsTable tbody").addEventListener("click", e => {
@@ -92,7 +94,8 @@ function initEvents() {
       deleteTeamRequest(id);
       window.location.reload();
     } else if (e.target.matches("a.edit-btn")) {
-      console.info("click on edit");
+      const id = e.target.dataset.id;
+      startEdit(id);
     }
   });
 }
