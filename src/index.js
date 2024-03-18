@@ -30,6 +30,16 @@ function createTeamRequest(team) {
   });
 }
 
+function deleteTeamRequest(id) {
+  fetch("http://localhost:3000/teams-json/delete", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ id: id })
+  });
+}
+
 function updateTeamRequest(team) {
   fetch("http://localhost:3000/teams-json/update", {
     method: "PUT",
@@ -93,12 +103,12 @@ function onSubmit(e) {
 
   window.location.reload();
 }
-function startEdit(id) {
+function startEdit(teams, id) {
   editId = id;
-  const team = allTeams.find(team => {
+  const team = teams.find(team => {
     return id === team.id;
   });
-  console.info(team);
+
   setFormValues(team);
 }
 function initEvents() {
@@ -111,17 +121,8 @@ function initEvents() {
     } else if (e.target.matches("a.edit-btn")) {
       e.preventDefault();
       const id = e.target.dataset.id;
-      startEdit(id);
+      startEdit(allTeams, id);
     }
-  });
-}
-function deleteTeamRequest(id) {
-  fetch("http://localhost:3000/teams-json/delete", {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ id: id })
   });
 }
 
