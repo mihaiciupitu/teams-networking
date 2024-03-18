@@ -50,7 +50,7 @@ function updateTeamRequest(team) {
   });
 }
 function loadTeams() {
-  const promise = fetch("http://localhost:3000/teams-json")
+  fetch("http://localhost:3000/teams-json")
     .then(r => r.json())
     .then(teams => {
       allTeams = teams;
@@ -104,13 +104,13 @@ function onSubmit(e) {
       }
     });
   } else {
-    const req = createTeamRequest(team);
-    const response = req.then(r => r.json());
-    response.then(status => {
-      if (status.success) {
-        window.location.reload();
-      }
-    });
+    createTeamRequest(team)
+      .then(r => r.json())
+      .then(status => {
+        if (status.success) {
+          window.location.reload();
+        }
+      });
   }
 }
 function startEdit(teams, id) {
